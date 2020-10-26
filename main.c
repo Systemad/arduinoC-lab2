@@ -10,7 +10,7 @@
 #include "timer.h"
 
 // Timer variable
-int time = 0;
+volatile int time = 0;
 
 void main (void) {
 	uart_init();	// Initialize UARt

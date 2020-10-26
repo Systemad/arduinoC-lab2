@@ -4,8 +4,8 @@
 
 void timer_init() {
 
-	// Set timer0 to CTC mode
-	TCCR0A = (1 << WGM01);
+	// Fast PWN Mode
+	TCCR0A |= (1 << WGM01) | (1 << WGM00);
 	
 	// Set prescaler to 1024
 	TCCR0B |= (1 << CS02 ) | ( 1 << CS00);
