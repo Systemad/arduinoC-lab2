@@ -9,27 +9,22 @@
 #include "serial.h"
 #include "timer.h"
 
-uint16_t time = 0;
+// Timer variable
+int time = 0;
 
 void main (void) {
-	uart_init();
-	timer_init();
-	DDRB |= (1<<PB3);
+	uart_init();	// Initialize UARt
+	timer_init();	// Initialize timer
+	LED_init();		// Initialize LED pin(s)
 
-	// 
-	TCCR0A = 0;
-
-	sei();
-	while (1) {};
-
-}
-
-
-ISR(TIMER0_COMPA_vect){
-	time++;
-	// TODO: Wrong value?
-	if (time > 100) {
-        PORTB ^= (1<<PB3);
-        time = 0;       
-    }
+	while (1) {						
+		if(TCNT0 >= tl_compare){	// If timer(TCNTO) matches compare value
+			time++;					// Increment value by 1
+			TCNT0 = 0;				// And reset timer
+			if(time > 10){			
+				PORTB ^= (1 << PB3);	// Toggle LED and reset time variable if time goes above 10	
+				time = 0;
+			}
+		}
+	}
 }
