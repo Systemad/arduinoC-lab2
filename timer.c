@@ -8,7 +8,7 @@ void timer_init() {
 	TCCR0A = (1 << WGM01);
 	
 	// Set prescaler to 1024
-	TCCR0B |= ( 1 << CS02 ) | ( 1 << CS00);
+	TCCR0B |= (1 << CS02 ) | ( 1 << CS00);
 
 	// Reset timer
 	TCNT0 = 0;
