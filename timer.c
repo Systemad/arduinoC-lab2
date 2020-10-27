@@ -8,13 +8,13 @@ void timer_init() {
 	TCCR0A = (1 << WGM01);
 	
 	// Set prescaler to 1024
-	TCCR0B |= (1 << CS02 ) | ( 1 << CS00);
+	TCCR0B |= (1 << CS02) | (1 << CS00);
 
-	// Reset timer
+	// Reset timer on initialization
 	TCNT0 = 0;
 
-	// Set compate value
-	OCR0A = tl_compare;
+	// Set output compare value
+	OCR0A = compare_value;
 
 }
 
