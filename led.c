@@ -4,7 +4,7 @@
 void LED_init() {
 	DDRB |= (1 << PB3);
 
-	// Pin 6 on Arduino to support OCR0A
+	// To use timer0 (OCR0A) we need to use pin 6 as output
 	DDRD |= (1 << PORTD6);
 
 }

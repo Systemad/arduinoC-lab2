@@ -11,48 +11,28 @@
 
 /*
 * Fade using FastPWM Mode, with TOP 0xFF and non inverting mode
+* Using two simple for loops to fade the led
+* in order to demostrate we are able to put apply different duty cycles / brightness to OCR0A / LED
+*	
 *
-*
-*
-*
-*
+* Brightness = duty cycle
 */
 
 int main (void)
 {
 	timer_init();
 	LED_init();
-
-    uint8_t brightness = 0;
-
-    while (brightness <= 255 ){
-        OCR0A = brightness;
-        _delay_ms(50);
-        brightness += 5;
-    }
-
-    while (brightness >= 0 ){
-        OCR0A = brightness;
-        _delay_ms(50);
-        brightness -= 5;
-    }
-}
-
-
-/*
+	
 	while(1)
-    {
-		
-        for(brightness = 0; brightness < 255; brightness++)
-        {
-            OCR0A = brightness;
-            _delay_ms(10);
-        }
+	{
+		for (uint8_t brightness = 0 ; brightness <= 255; brightness += 5) {
+			OCR0A = brightness;
+			_delay_ms(40);
+		}
 
-        for(brightness = 255; brightness > 0; brightness--)
-        {
-            OCR0A = brightness;
-            _delay_ms(10);
-        }
-    }
-*/
+		for (uint8_t brightness = 255 ; brightness >= 0; brightness -= 5) {
+			OCR0A = brightness;
+			_delay_ms(40);
+		}
+	}
+}
