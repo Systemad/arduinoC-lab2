@@ -4,22 +4,17 @@
 
 void timer_init() {
 
-	// Fast PWN Mode
-	TCCR0A |= (1 << WGM01) | (1 << WGM00);
+	//		  Non-invering mode, Fast PWN mode, 0xFF as top
+	TCCR0A |= (1 << COM0A1) | (1 << WGM01) | (1 << WGM00);
 
-	// set non-inverting mode
-	TCCR0A |= (1 << COM0A1);
-	
-	// Set prescaler to 1024
-	//TCCR0B |= (1 << CS02 ) | ( 1 << CS00);
-
-	// Reset timer
-	TCNT0 = 0;
+	// 		  Set prescale to 64
+	TCCR0B = (1 << CS00) | (1 << CS02);
 
 	
-	OCR0A = 128;
+	OCR0A = 255;
 
 }
+
 
 
 
