@@ -30,7 +30,7 @@ void main (void) {
 }
 
 
-/*
+/* ----------------------------------------------------------------------------------------------------
 	while (1) {						
 		if(TCNT0 >= compare_value){		// If timer(TCNTO) matches compare value
 			timer++;					// Increment value by 1

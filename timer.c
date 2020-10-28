@@ -15,7 +15,6 @@ void timer_init() {
 
 	// Set output compare value
 	OCR0A = compare_value;
-
 }
 
 
