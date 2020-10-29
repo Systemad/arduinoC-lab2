@@ -1,4 +1,2 @@
-atmega328p AVR programming in C
-Lab 2: Assignment 1 and Assignment 2.
-
-Each assignment is in their each branch, Assigment 1 = delupp1, Assignment 2 = delup2.
+# arduinoC-lab2
+Assignment 2: Use Fast PWM to apply different values/brightness/duty cycles to a LED, with non inverted mode and 0xFF as TOP. Here we use OCR0A, which results in using port 6.

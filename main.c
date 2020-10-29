@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <avr/pgmspace.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
 
 #include <stdio.h>
@@ -8,12 +9,30 @@
 #include "serial.h"
 #include "timer.h"
 
-void main (void) {
-	uart_init();
+/*
+* Fade using FastPWM Mode, with TOP 0xFF and non inverting mode
+* Using two simple for loops to fade the led
+* in order to demostrate we are able to put apply different duty cycles / brightness to OCR0A / LED
+*	
+*
+* Brightness = duty cycle
+*/
 
-	while (1) {
-		/* remove this once you've verified it works */
-		printf_P(PSTR("Hello there\n"));
-		_delay_ms(1000);
+int main (void)
+{
+	timer_init();
+	LED_init();
+	
+	while(1)
+	{
+		for (uint8_t brightness = 0 ; brightness <= 255; brightness += 5) {
+			OCR0A = brightness;
+			_delay_ms(40);
+		}
+
+		for (uint8_t brightness = 255 ; brightness >= 0; brightness -= 5) {
+			OCR0A = brightness;
+			_delay_ms(40);
+		}
 	}
 }
