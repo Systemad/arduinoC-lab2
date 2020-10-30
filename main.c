@@ -25,14 +25,14 @@ int main (void)
 	
 	while(1)
 	{
-		for (uint8_t brightness = 0 ; brightness <= 255; brightness += 5) {
+		for (uint8_t brightness = 5; brightness <= 250; brightness += 5) {
 			OCR0A = brightness;
-			_delay_ms(40);
+			_delay_ms(50);
 		}
 
-		for (uint8_t brightness = 255 ; brightness >= 0; brightness -= 5) {
+		for (uint8_t brightness = 250; brightness >= 5; brightness -= 5) {
 			OCR0A = brightness;
-			_delay_ms(40);
+			_delay_ms(50);
 		}
 	}
 }
